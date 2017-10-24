@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="regist" class="actionUser" method="regist">
+			<result>/reg_success.jsp</result>
+			<result name="input">/reg_error.jsp</result>
+		</action>
+		
+		
+		
+		<action name="login" class="actionUser" method="login" >
+			<result name="1">/tS.jsp</result>
+			<result name="2">/tG.jsp</result>
+			<result name="3">/tD.jsp</result>
+			<result name="4">/tA.jsp</result>
+			<result name="Error">/Error.jsp</result>
+		</action>
+		
+		<action name="changePassAdmin" class="actionUser" method="changePass">
+		
+			<result type="redirect" >/Admin/changeSuccess.jsp</result>
+			<result name="input" type="redirect" >/Admin/changeFail.jsp</result>
+		
+		</action>
+		
+		<action name="changePassGuid" class="actionUser" method="changePass">
+		
+			<result type="redirect" >/Guid/changeSuccess.jsp</result>
+			<result name="input" type="redirect" >/Guid/changeFail.jsp</result>
+		
+		</action>
+		
+		<action name="changePassStudent" class="actionUser" method="changePass">
+		
+			<result type="redirect" >/Student/changeSuccess.jsp</result>
+			<result type="redirect" name="input">/Student/changeFail.jsp</result>
+		
+		</action>
+		
+		<action name="changePassDepart" class="actionUser" method="changePass">
+		
+			<result type="redirect"  >/Depart/changeSuccess.jsp</result>
+			<result name="input" type="redirect"  >/Depart/changeFail.jsp</result>
+		
+		</action>
+		
+
+		<action name="infoquery" class="actionUser" method="infoquery">
+			<result>/infoAll.jsp</result>
+			<result name="input" type="redirectAction">
+				<param name="actionName">login</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="edit" class="actionUser" method="edit">
+			<result>/edit.jsp</result>
+			<result name="input">/show.jsp</result>
+		</action>
+			<action name="update" class="actionUser" method="update">
+			<result type="redirectAction">
+				<param name="actionName">infoquery</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		
+		<action name="delete" class="actionUser" method="delete">
+			<result>/show.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		
+	</package>
+</struts>

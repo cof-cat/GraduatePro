@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="GraduatePro"
+  id="myeclipse.1496744932182"
+  context-root="/GraduatePro"
+  j2ee-spec="5.0"
+  archive="GraduatePro.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

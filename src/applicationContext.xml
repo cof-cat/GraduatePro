@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver">
+		</property>
+		<property name="url"
+			value="jdbc:sqlserver://127.0.0.1:1433;databaseName=GraduateDB">
+		</property>
+		<property name="username" value="sa"></property>
+		<property name="password" value="rootsa"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.SQLServerDialect
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>edu/td/model/Uinfo.hbm.xml</value>
+				<value>edu/td/model/User.hbm.xml</value>
+				<value>edu/td/model/Address.hbm.xml</value>
+				<value>edu/td/model/AllInfo.hbm.xml</value></list>
+		</property>
+	</bean>
+		<bean id="allInfoDao" class="edu.td.dao.AllInfoDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="operationDao" class="edu.td.dao.OprationDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="userDao" class="edu.td.dao.UserDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="actionUser" class="edu.td.actions.ActionUser">
+		<property name="operationDao">
+			<ref bean="operationDao" />
+		</property>
+		<property name="userDao">
+			<ref bean="userDao" />
+		</property>
+		<property name="allInfoDao">
+			<ref bean="allInfoDao" />
+		</property>
+	</bean>
+
+
+
+</beans>

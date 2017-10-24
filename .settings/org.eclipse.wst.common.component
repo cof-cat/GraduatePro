@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="s2shPro">
+        <wb-resource deploy-path="/" source-path="/WebRoot"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="/s2shPro"/>
+        <property name="java-output-path" value="/s2shPro/WebRoot/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>
